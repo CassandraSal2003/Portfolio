@@ -1,0 +1,95 @@
+import sys  
+import json 
+import os  
+
+class Bank:
+    tot_customers = 0
+    FILENAME = "budget_data.json"  # File to store budget data
+
+    def __init__(self, acc_bal, name):
+       
+        self.acc_bal = acc_bal  # Set the initial account balance
+        self.name = name  # Set the customer's name
+        self.budgets = self.load_budgets()  # Load budget data from file
+        self.transactions = []  # List to store transaction history
+        Bank.tot_customers += 1
+        
+    
+    def process_customer_request(self):
+        self.greet()  # Display a welcome message
+        self.show_options()  # Show the available options
+        self.process_choices()  # Process the user's choice
+    
+    def greet(self):
+        print(f'Welcome to Capital One Bank, {self.name}!!!')
+    
+    def show_options(self):
+        print('''1. Check Balance
+2. Withdraw
+3. Update Budget
+4. Exit''')  # Display the menu options
+    
+    def process_choices(self):
+        user_choice = int(input('Enter your choice: '))  # Get the user's choice as an integer
+        if user_choice == 1:
+            print(f'Your account balance is: {self.acc_bal}')  # Display the account balance
+        elif user_choice == 2:
+            self.withdraw()  # Process a withdrawal
+        elif user_choice == 3:
+            self.update_budget()  # Update a budget limit
+        elif user_choice == 4:
+            self.exit_program()  # Exit the program
+        else:
+            print('Please enter one of the options: 1, 2, 3, or 4')
+    
+    def withdraw(self):
+        category = input('Enter the category: ')  # Get the category for the withdrawal
+        withdraw_amt = int(input('Enter amount to withdraw: '))  # Get the withdrawal amount
+  
+        if category in self.budgets:
+            budget_limit = self.budgets[category]
+            if withdraw_amt > budget_limit:
+                print(f'Warning: You are exceeding the budget limit for {category}.')
+        else:
+            print(f'Warning: No budget limit set for category {category}.')
+      
+        self.acc_bal -= withdraw_amt  # Deduct the withdrawal amount from the account balance
+        self.transactions.append((category, withdraw_amt))  # Add transaction to history
+        print(f'Your account balance is: {self.acc_bal}')
+  
+    def update_budget(self):
+        category = input('Enter the category: ')  # Get the category to update
+        new_budget = int(input('Enter the new budget limit: '))  # Get the new budget limit
+        self.budgets[category] = new_budget  # Update the budget limit for the category
+        print(f'Budget limit for {category} has been updated to: {new_budget}')
+        self.save_budgets()  # Save budget data to file
+    
+    def exit_program(self):
+        try:
+            os.remove(Bank.FILENAME)  # Permanently remove the budget data file
+        except FileNotFoundError:
+            pass
+
+        self.acc_bal = 0  # Reset the account balance to 0
+        self.budgets = {}  # Clear the budgets dictionary
+        self.transactions = []  # Clear the transaction history
+        self.save_budgets()  # Save budget data to file
+       
+
+        print('Thank you for using Capital One Bank. Goodbye!')
+        sys.exit()
+    
+    def load_budgets(self):
+        try:
+            with open(Bank.FILENAME, 'r') as file:
+                budgets = json.load(file)
+        except FileNotFoundError:
+            budgets = {}
+        return budgets
+    
+    def save_budgets(self):
+        with open(Bank.FILENAME, 'w') as file:
+            json.dump(self.budgets, file)
+
+cass = Bank(1000, 'Cass')
+cass.process_customer_request()
