@@ -1,0 +1,14 @@
+#Cassandra Salazar, Section 05, 3/10/2022, assignment 5, problem 4
+#ask user for a sentence and use string
+s=str(input("Enter a sentence: "))
+#create an empty string
+s1=""
+#go through input string 
+for c in s:
+  #use "if" statement to say if it has "aeiou" it will add nothing to the string
+  if c.lower() in 'aeiou':
+    s1+=""
+  #if not a vowel we add it to the empty string 
+  else: 
+    s1+=str(c)
+print("Your string in shorthand is:", s1) 
