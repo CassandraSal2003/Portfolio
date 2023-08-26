@@ -1,0 +1,31 @@
+#Cassandra Salazar, Section 05, 3/10/2022, assignment 5, problem 1
+#ask the user for two numbers
+first=int(input("Enter the first number:")) 
+sec=int(input("Enter the second number:")) 
+#calculate each number's factors to see if they do or don't have any in common. 
+def prime (first, sec): 
+  prime = True 
+  first_factors = [] 
+  sec_factors = [] 
+  for i in range (2, first+1):
+#make first and sec equal to zero to determine whether  it has a remainder
+    if first % i == 0: 
+      first_factors.append(i) 
+  for i in range (2, sec+1): 
+      if sec % i == 0: 
+        sec_factors.append(i) 
+  new_list=[]
+  
+  for j  in first_factors:
+    for k in sec_factors:
+      if j==k:
+        new_list.append(k)
+#print out whether they are relatively prime or not    
+  length=len(new_list)
+  if length==0:
+    print (first, "and", sec, "are relatively prime.")
+  else:
+    print (first, "and", sec, "are not relatively prime. ")
+prime(first, sec)
+      
+    
