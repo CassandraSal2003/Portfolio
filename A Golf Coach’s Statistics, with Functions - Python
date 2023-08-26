@@ -1,0 +1,62 @@
+#Cassandra Salazar, Section 05, 3/10/2022, assignment 6, problem 3
+
+#function: input_positive, input_50_150, professional(score) to make the user meet the conditions of the program
+#input: number of golfers coached, number of rounds, score for each player and round
+#output: the average of each player and overall average of players
+
+#make a function and make the conditions so that if its not a positive number, it tells the user to input a positive number
+
+def input_positive(prompt):
+  
+  while True:
+    num_golfers=int(input(prompt))
+    if num_golfers<0 or num_golfers==0:
+      print ("Please enter a positive number.")
+      
+    else:
+      return num_golfers
+
+#make function to make the conditions so that the user enters a number between 50 and 150. If not, the program asks the user again. 
+def input_50_150(prompt):
+  while True:
+    x=int(input(prompt))
+    if x<50 or x>150:
+      print("Please enter a positive number between 50 and 150.")
+    else:
+      return x
+
+#make a function to state whether someone's score is professional (less than or equal to 72)
+def  professional(score):
+  if score<=72:
+    return True
+  else:
+    return False
+
+#make variables and call the function input_positive in order to meet the conditions
+num_golfers=input_positive("How many golfers do you coach?")
+round_golf=input_positive("How many rounds did each golfer play?")
+
+#make accumulator variable
+overall_total=0   
+
+for i in range (num_golfers):
+  student_total_score=0
+  
+  
+#call the function input_50_150 to make the input meet the conditions 
+#calculate each student's total score and the average for each
+  for k in range (round_golf): 
+    scores=input_50_150("What was golfer #" + str(i+1) + "'s score on round #" + str(k+1)+ "?")
+    student_total_score+=scores
+    
+  print(f"Golfer {i+1}'s average was {(student_total_score/round_golf):.2f}")
+  overall_total+=student_total_score/round_golf
+#call the function for professional grade
+  if professional(student_total_score/round_golf):
+    print("That is professional grade.")
+
+
+#calculate the overall average by using the variables made and dividing it 
+
+overall_avg= overall_total/num_golfers
+print(f"The overall average was {overall_avg:.2f}")
