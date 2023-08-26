@@ -1,0 +1,14 @@
+#Ask the user the average price of a taco in 2020 and 2021
+twenty_one=float(input ("What was the average price of a taco in 2020? "))
+twenty_two=float(input ("What was the average price of a taco in 2021? "))
+
+#Find the inflation rate
+a=twenty_one
+b=twenty_two
+inflation_rate=((b-a)/a)*100
+
+print("The taco inflation rate was", format (inflation_rate, ".2f" ), "%")
+
+
+
+
