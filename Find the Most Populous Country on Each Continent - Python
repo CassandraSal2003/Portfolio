@@ -1,0 +1,77 @@
+#Cassandra Salazar, Section 05, 4/25/2022, assignment 9, problem 4
+#Partner:Tamara Bueno
+
+#Function:  findMostPopulousCountry() that takes the variables “data” and “continents”. 
+#Process: Use for loops, if statements, and Index
+#Output: a list containing the most populous country on each continent
+
+def readData():
+    data=[]
+    f = open("countries.csv", "r")
+    priceList = f.readlines()
+    for item in priceList:
+        item_split=item.strip().split(',')
+        item_split[2]=int(item_split[2])
+        item_split[3]=int(item_split[3])
+        item_split[4]=int(item_split[4])
+        data.append(item_split)
+    return data
+    f.close()                           # closes file
+readData()
+data = readData()                       #print (data)
+                                        
+
+
+def findContinents(x):
+    continents=[]
+    for i in range(len(x)):              # only lets each continents[1], show
+        if x[i][1] not in continents:
+                continents.append(x[i][1])
+    
+    return continents
+print(findContinents(data))              #findContinents()                               
+continents = findContinents(data)
+
+
+
+def findContinentAreas(data, continents):                               
+  area_list=[]                          # create area list and make list of zeros where each zero stands for continent 
+  for i in range (len(continents)):     # creating list of zeros for the areas of continents
+    area_list.append(0)
+  for country in data:
+    cont=country[1]
+    area=country[4]                     # search for continent list and look for index of specific continent
+    idx=continents.index(cont)
+    area_list[idx]+=area                # adding the area of each country into one continent
+  return area_list
+print(findContinentAreas(data, continents))
+
+print(data)
+# max populous for every country in each continent
+def findMostPopulousCountry(data): # y?
+    population = [0,0,0,0,0] #Europe, Asia, Americas, Oceania, Africa
+    populous_country = ["","","","",""]
+    for i in data:
+        if i[1] == "Europe":            # for every country in europe 
+            if i[3] > population[0]:    # filters for larges populations
+                population[0] = i[3]
+                populous_country[0] = i[0]
+        elif i[1] == "Asia":
+            if i[3] > population[1]:    # filters for most populous country in continent
+                population[1] = i[3]
+                populous_country[1] = i[0]
+        elif i[1] == "Americas":
+            if i[3] > population[2]:
+                population[2] = i[3]
+                populous_country[2] = i[0]
+        elif i[1] == "Oceania":
+            if i[3] > population[3]:
+                population[3] = i[3]
+                populous_country[3] = i[0]
+        elif i[1] == "Africa":
+            if i[3] > population[4]:
+                population[4] = i[3]
+                populous_country[4] = i[0]
+    #print(population) #this is the number of population
+    print(populous_country)
+findMostPopulousCountry(data)
