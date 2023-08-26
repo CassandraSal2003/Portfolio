@@ -1,0 +1,35 @@
+#Cassandra Salazar, Section 05, 4/18/2022, assignment 8, problem 1
+
+# function: products, prices, inventory
+# input: strings
+# processing: takes input and adds onto a list
+# output: a list with all inputted information
+
+products=[]
+prices=[]
+inventory=[]
+
+while True:
+    product_asked= input("Enter a product name, enter stop to exit: ")
+    if product_asked == "stop": # if stop ends
+        break
+    else: # only countniues if it doesnt say "stop"
+        price_asked= input("Enter the price of the product: ")
+        count_asked = input("Enter the inventory count of the product: ")
+        
+        if product_asked not in products:
+            products.append(product_asked) # adds to product list
+            
+        if price_asked not in prices: # adds to prices list
+            prices.append(price_asked)
+           
+        if count_asked not in inventory: # adds to inventory list
+            inventory.append(count_asked)
+                                     
+print("The product list is: ", products) #['rye bread', 'strawberry jam', 'frozen waffles']
+print("The prices are: ", prices) #[3.99, 4.99, 5.99]
+print("The inventory list is: ", inventory) #[4, 3, 5]
+
+#products=['rye bread','strawberry', 'frozen waffles']
+#prices=[3.99,4.99,5.99]
+#inventory=[4,3,5]
