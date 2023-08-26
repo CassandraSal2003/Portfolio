@@ -1,0 +1,38 @@
+#Cassandra Salazar, Section 05, 4/9/2022, assignment 7, problem 1
+# funtion: encrypt(), reverses non-alphabetic charcacters
+# input: a value into the function
+# processing: through the ascii, determines the swap. For
+#            upper case and lower case ascii.
+# output: first letter swaps with last letter of alphabet through
+#           the ascii table
+
+def encrypt(user):
+    str_length=len(user)
+    newtext=""
+    for i in range(str_length):
+        c = user[i]
+        ascii = ord(c)
+        #print ("this letter '" +c+ "' has ascii value", ascii)
+        if not c.isalpha():
+             newtext+=c
+        elif c.isupper():
+            
+            ascii= ascii- ord('A')+1
+            ascii= 91 - ascii #
+            newtext+=(chr(ascii))
+            
+        elif c.lower():
+            
+            ascii= ascii- ord('a')+1
+            ascii= 123 - ascii #
+            newtext+=(chr(ascii))
+            
+    return (newtext)
+
+#user=str(input("Enter:"))
+print(encrypt("AABBAA"))
+print(encrypt("aabbaa"))
+print(encrypt("lmno"))
+print(encrypt("zzYYZZ"))
+print(encrypt(encrypt("AAbbZZ")))
+print(encrypt("I have 3 dogs"))
