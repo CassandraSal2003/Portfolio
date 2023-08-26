@@ -1,0 +1,38 @@
+#Cassandra Salazar, Section 05, 4/18/2022, assignment 8, problem 4
+
+#Function: roll2(side) to generate random outputs of two six sided die
+#keep list of outcomes. if something is not in the list then append it to the list. Stop the function when it has reached all 36 possibilities. 
+#Use the sort function to put the outcomes in order
+#Output: The unsorted and the sorted list of outcomes
+
+#import random numbers
+import random
+#make a counter variable to count the number of variations until it reaches 36
+#make an empty list
+counter=0
+my_list=[]
+
+#make two variables to represent each dice being "rolled" and use the random function
+def roll2(side):   
+  dice1 = random.randint(1, side) 
+  dice2 = random.randint(1, side) 
+  return [dice1, dice2]
+
+#make the length of the list 36 to show all possible outcomes when you "roll" the die
+while 36>len(my_list):
+
+#make the function into a variable to save the numbers rolled
+  roll_list=roll2(6)
+
+#if a roll is NOT already in the list then append it (add on the ones that are not included yet )
+  if not (roll_list in my_list):
+    my_list.append(roll_list)
+#counts the amount of times rolled  
+  counter+=1
+ 
+print("You rolled the dice", counter,  "times.")
+print(my_list)
+print()
+
+#print sorted version
+print(sorted(my_list))
