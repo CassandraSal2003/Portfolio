@@ -1,0 +1,18 @@
+#Cassandra Salazar 2/3/2022 section 11, Conversion code. The way I did this code is by printing the necessary phrases such as "author report for". The name of the book is represented by other variables so that it is easier to print. To find the average, it is just basic math except using the phrases that represent the numbers. 
+Fellowship_pages=432
+Two_Towers_pages=352
+Return_King_pages=432
+first_name = "J.R.R."
+last_name = "Tolkien"
+all_books_average=325
+print ("Author report for: ", first_name, last_name)
+print ("Number of pages in each book: ", Fellowship_pages, ", ", Two_Towers_pages, ", and ", Return_King_pages, sep = "")
+# sum the 5 scores
+total = Fellowship_pages + Two_Towers_pages + Return_King_pages
+# calculate the average
+avg = total / 3
+# report to user
+final = avg - all_books_average
+
+print("Average number of pages: ", format(avg, ",.2f"))
+print("Average pages in", last_name, "minus average of all books: ", format(final, ",.2f"))
