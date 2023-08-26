@@ -1,5 +1,4 @@
 #Cassandra Salazar, Section 05, 4/25/2022, assignment 9, problem 4
-#Partner:Tamara Bueno
 
 #Function:  findMostPopulousCountry() that takes the variables “data” and “continents”. 
 #Process: Use for loops, if statements, and Index
