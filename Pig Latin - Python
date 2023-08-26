@@ -1,0 +1,43 @@
+#Cassandra Salazar, Section 05, 4/9/2022, assignment 7, problem 5
+
+#Function: cCluster() to get vowels and consonants. pigLatin() to return "yay" to end if starts with vowels; return "ay" at the end of word if it begins with consonants
+#use if statements and return values
+#output: "yay" and "ay" depending on conditions
+
+
+#string index checks if first character is a vowel and returns nothing (blank)
+def cCluster(x):
+  if x[0] in ["a", "e", "i", "o", "u"]:
+    return ""
+
+#if first isn't a vowel and if second is a vowel then returns first character
+  if x[0].isalpha() and x[0] not in ["a", "e", "i", "o", "u"] and x[1] in ["a", "e", "i", "o", "u"]:
+    return x[0]
+  
+  string=""  
+#examines through each character and returns the consonants to the string  
+  for i in x:
+    if i in ["a", "e", "i", "o", "u"]:
+      return string
+    else:
+      string+=i
+
+
+#make new function and define a new empty string
+def pigLatin(str):
+  new_str= ""
+#if first letter is a vowel return "yay"
+  if str[0] in ["a", "e", "i", "o", "u"]:
+    return str + 'yay'
+#if it is a consonant, call the cCluster function and return the new string so that the consonants are moved to the end of the word and “ay” is added
+  else:
+    new_str= str.split(cCluster(str))[1]
+    new_str+=cCluster(str)+'ay'
+    return new_str
+
+print(pigLatin("strap")) # “apstray”
+print(pigLatin("rap")) # “apray”
+print(pigLatin("apple")) # “appleyay”
+  
+
+  
