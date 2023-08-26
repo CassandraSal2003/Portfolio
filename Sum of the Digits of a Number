@@ -1,0 +1,11 @@
+#I asked the user to input a number , then I made variables and used the modulo and dashes to separate the digits the user put in. Then I added up the variables and printed the solution. 
+# pick a random integer between 100 and 999 inclusive
+num = int(input("Enter a number between 100 and 999 inclusive: "))
+ones_place=num%10
+tenths_place=(num//10)%10
+hundreds_place=num//100
+
+total=ones_place+tenths_place+hundreds_place
+
+   
+print("The sum of the digits is ",total, ".", sep="")
