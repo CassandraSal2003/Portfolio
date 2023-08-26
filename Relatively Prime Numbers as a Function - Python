@@ -1,0 +1,50 @@
+#Cassandra Salazar, Section 05, 4/1/2022, assignment 6, problem 1
+
+# function: relPrime() and see if two numbers are relatively prime
+# input: two integers
+# output: Boolean value that is True if the two integers input and False if not. Make sure to print as well if they are relatively prime.
+
+# are relatively prime, False otherwise
+#ask the user for two numbers
+first=int(input("Enter the first number:")) 
+sec=int(input("Enter the second number:")) 
+
+#make a function to calculate each number's factors to see if they have any in common. 
+
+def relPrime (first, sec): 
+  relPrime = True 
+  first_factors = [] 
+  sec_factors = [] 
+  for i in range (2, first+1):
+#make first and sec equal to zero to determine whether  it has a remainder
+    if first % i == 0: 
+      first_factors.append(i) 
+  for i in range (2, sec+1): 
+      if sec % i == 0: 
+        sec_factors.append(i) 
+  new_list=[]
+  
+  for j  in first_factors:
+    for k in sec_factors:
+      if j==k:
+        new_list.append(k)
+   
+  length=len(new_list)
+
+#return true or false
+  if length==0:
+    return True
+  else:
+    return False 
+#call the function and print out the answer
+if relPrime(first, sec):
+  print(first, "and", sec, "are relatively prime.")
+else:
+  print(first, "and", sec, "are not relatively prime.")
+
+
+
+
+    
+
+    
