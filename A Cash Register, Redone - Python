@@ -1,0 +1,40 @@
+#Cassandra Salazar, Section 05, 5/3/2022, assignment 10, problem 2
+
+# function: ask for input
+# input: strings that match the dictionary
+# processing: takes input and matches it to the dictionary
+# output: price and amount of products purchased
+
+newproductData = {}
+productData = {
+    'rye bread': {'price': 3.99, 'inventory': 4},
+    'strawberry jam': {'price': 4.99, 'inventory': 3},
+    'frozen waffles': {'price': 5.99, 'inventory': 5}
+    }
+
+# prob 8
+total=0
+print("Welcome to our store!")
+while True:
+    p= input("Enter a product, enter 'stop' to exit: ")
+    if p=="stop": break 
+    if p in productData:
+        while True:
+            x = int(input(f"How many do you want of product: {p}: "))
+            if x>productData[p]["inventory"]: 
+                    #p in product data     
+                print(f"Only {productData[p]['inventory']} in stock, try again.") 
+            else:
+                total+=productData[p]['price']*x # acumalates total prices
+                productData[p]["inventory"]-=x
+                print(f"The price for {x} of product: {p} is ${productData[p]['price']*x}.")
+                break
+        print(f"Your total so far is ${total}.")
+    else:
+        print ("Product not in inventory, please try again.")
+   
+print(f"Your grand total, including tax, is ${total*1.08875:.2f}.")
+print("Thank you for shopping at the CS 0002 store!")
+
+#productData[product][“price”] = 3.99 # if product equals “rye bread”
+
