@@ -1,0 +1,43 @@
+#Cassandra Salazar, Section 05, 4/9/2022, assignment 7, problem 2
+
+
+# function: scramble(), swaps 1st character with 2nd, the 3rd with 4th
+#           and if off last is left as is
+# input: a string input
+# processsing: counts letters in string, then in for loop/range seperates the chacracters,
+# if even swap, if odd then last charcter is left as is.
+# output: scrambles a string by swapping the first character with the second,
+#   the third character with the fourth, etc. If the string has
+#   an odd number of characters, the last character is left as is.
+
+# use string slicing
+def scramble(string):
+    str_length=len(string)
+    x = ""
+    for i in range(str_length):
+    
+        c=string[i]
+        # hello
+        # ehllo
+
+        # true when we want to initiate a swap
+        if i % 2 == 0:
+
+            # to make sure there is a next letter to swap
+            if i + 1 < len(string):
+                x += string[i+1]
+                x += string[i]
+            else:
+                x += string[i]
+        
+        
+    return x
+
+#string =str(input("Enter:"))
+#print(scramble(string))
+
+print(scramble("hello there"))
+print(scramble("1234"))
+print(scramble("123"))
+
+
