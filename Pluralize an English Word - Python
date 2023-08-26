@@ -1,0 +1,28 @@
+#Cassandra Salazar, Section 05, 4/9/2022, assignment 7, problem 6
+
+#Function: plural() to state the position of the character you want to replace and add to the string
+#use if and elif statements and return string and added conditions
+#output: The plural version of the string entered to the function
+
+
+#x is the string and "-1" represents the last character. I put it equal to "y" to state that if the last letter is equal to "y", then replace it and add "ies".
+def plural(x):
+  if x[-1]=="y":
+    #excludes the last character which is "y"
+    return x[:-1]+"ies"
+
+#if the last two letters are "ch", return and add "es" to the string. It is a similar process for the next conditions.
+  elif x[-2:]=="ch":
+    return x+"es"
+#If last letter of the string "x" (-1) is "s" return and add "es" to the string
+  elif x[-1]=="s":
+    return x+"es"
+#anything else, return and add "s" to the string
+  else:
+    return x+"s"
+  
+    
+print(plural("hurry")) # “hurries”
+print(plural("patch")) # “patches”
+print(plural("bus")) # “buses”
+print(plural("cat")) # “cats”
