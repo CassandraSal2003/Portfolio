@@ -1,0 +1,21 @@
+#Cassandra Salazar, Section 05, 4/1/2022, assignment 6, problem 5
+
+#Function: calcPi() to find the steps in stating pi
+#use for loop and counter variables
+#output: the beginning numbers of Pi
+
+
+#make function and make counter variables. 
+def calcPi(n): 
+  counter = 1 
+  final = 4
+  #make range starting from 3 and ending at n which is a million. add 1 to n to make it inclusive. put 2 at the end to only have the odd numbers. make counter so that if its not even, it calculates the number if pi. Call the function calcPi at the end and set it to a million and 1 
+  for i in range (3,n+1,2):
+    if counter%2!= 0:
+      final -= (4/i) 
+    else:
+      final += (4/i) 
+    counter+=1 
+  return final 
+print(calcPi(1000001))
+
