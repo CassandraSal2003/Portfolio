@@ -1,0 +1,27 @@
+#Cassandra Salazar, Section 05, 4/9/2022, assignment 7, problem 4
+
+#Function: cCluster() to get vowels and consonants and return specific conditions
+#use if statements and return values
+#output: return empty string, consonant, substring
+
+#string index checks if first character is a vowel and returns nothing (blank)
+def cCluster(x):
+  if x[0] in ["a", "e", "i", "o", "u"]:
+    return ""
+
+#if first isn't a vowel and if second is a vowel then returns first character
+  if x[0].isalpha() and x[0] not in ["a", "e", "i", "o", "u"] and x[1] in ["a", "e", "i", "o", "u"]:
+    return x[0]
+  
+  string=""  
+#examines through each character and returns the consonants to the string  
+  for i in x:
+    if i in ["a", "e", "i", "o", "u"]:
+      return string
+    else:
+      string+=i
+    
+print(cCluster("strap")) # “str”
+print(cCluster("apple")) # “”
+print(cCluster("Hello")) # “H”
+  
