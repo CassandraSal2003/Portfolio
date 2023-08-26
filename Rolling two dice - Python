@@ -1,0 +1,15 @@
+#Cassandra Salazar, Section 05, 4/18/2022, assignment 8, problem 3
+
+#Function: roll2(side) to generate random outputs of two six sided die
+#make variables and return the function
+#output: two random numbers from 1-6
+
+
+#import random numbers 
+import random
+def roll2(side): 
+#make two variables to represent each dice being "rolled" and use the random function
+    dice1 = random.randint(1, side) 
+    dice2 = random.randint(1, side) 
+    return dice1, dice2
+print(roll2(6))
