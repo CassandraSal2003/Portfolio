@@ -1,0 +1,46 @@
+
+#I printed the dashes and the name of the calculator. Then I asked the user how many quarts they want to convert. I made a list of the different measurements to convert to quarts based on the users input.  
+line= ("-")*60
+print(line)
+print(format("Quarts Conversion Calculator", '>44s'))
+print(line)
+user = float(input("How many quarts would you like to convert?"))
+print()
+
+#1 fluid ounces = 0.0312 quart
+#1 cup = 8 fluid ounces
+#1 pint = 2 cups
+#1 quart = 2 pints
+#1 gallon = 4 quarts
+#1 liter = 1000 milliliters
+#1 fluid ounce = 0.0295735 liters
+
+quarts=user
+pint=quarts*2
+cups=pint*2
+fluid_oz=cups*8
+gallons=quarts/4
+liter=quarts/1.0566882094
+mil=liter*1000
+tbs=fluid_oz*2
+
+
+print(user, "quarts ...")
+print()
+print("... in tablespoons:         ", format(tbs, ".2f"))
+
+print("... in ounces:              ", format(fluid_oz, ".2f"))
+
+print("... in cups:                ", format(cups, ".2f"))
+
+print("... in pints:               ", format(pint, ".2f"))
+
+print("... in gallons:             ", format(gallons, ".2f"))
+
+print("... in milliliters:         ", format(mil, ",.2f"))
+
+print("... in liters:              ", format(liter, ".2f"))
+
+#Forgetting a comma would cause a syntax error because it is necessary for making multiple commands when you're printing something for instance. Another is if I forget to put a parenthesis when trying to print a function, which wouldn't work. 
+#A logical error can be if I didnt convert something properly and had a error in my calculations because it would be my fault, not the program's. 
+#A runtime error can be if I forget to define a variable and I try to print it. 
