@@ -1,0 +1,59 @@
+#Cassandra Salazar, Section 05, 4/1/2022, assignment 6, problem 2
+
+# function: relPrime3(); test if three numbers are relatively prime
+# input: three integers
+# output: a Boolean value that is True or False depending on the input of three integers 
+
+
+#ask the user for two numbers
+first=int(input("Enter the first number:")) 
+sec=int(input("Enter the second number:"))
+third=int(input("Enter the third number:"))
+#calculate each number's factors to see if they do or don't have any in common. 
+
+def relPrime3 (first, sec, third): 
+  relPrime = True 
+  first_factors = [] 
+  sec_factors = [] 
+  third_factors=[]
+  for i in range (2, first+1):
+
+#make first, sec, third equal to zero to determine whether  it has a remainder
+    if first % i == 0: 
+      first_factors.append(i) 
+
+  for i in range (2, sec+1): 
+      if sec % i == 0: 
+        sec_factors.append(i) 
+
+  for i in range (2, third+1): 
+      if third % i == 0: 
+        third_factors.append(i) 
+  new_list=[]
+  
+  
+  for j  in first_factors:
+    for k in sec_factors:
+      for l in third_factors:
+        if j==k or l==j or l==k:
+          new_list.append(k)
+
+#print out whether they are relatively prime or not by returning true or False  
+  length=len(new_list)
+ 
+  if length==0:
+    return True
+  else:
+    return False 
+#make "if" and "else" statement to state outcome of the numbers
+if relPrime3(first, sec, third):
+  print(first, ",", " ", sec, " and ", third, " are all relatively prime to one another.", sep="")
+else:
+  print(first, ",", " ", sec, " and ", third, " are not all relatively prime to one another.", sep="")
+
+
+
+
+    
+
+
