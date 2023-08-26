@@ -8,17 +8,21 @@ Original file is located at
 """
 
 #Cassandra Salazar, Section 05, 3/3/2022, assignment 4, problem 4
+#make variables and ask the user how many pitchers there are 
 pitchers=int(input("How many pitchers?"))
 lowest=0
 greatest=0
 
+#use the variable "pitchers" for the range and make another variable to represent the ERA input by the user 
 for i in range (pitchers):
   ERA= float(input("What is the ERA for pitcher #"+ str(i+1)+"? "))
 
+#write if statements to determine the highest and lowest numbers to state the best and worst pitcher 
+#use less than, greater than, or equal to to state the conditions 
   if i==0:
     lowest=ERA
     greatest=ERA
-  
+
   if ERA > greatest:
     greatest=ERA
     worst_pitcher= (i+1)
@@ -27,6 +31,6 @@ for i in range (pitchers):
     lowest=ERA
     best_pitcher= (i+1)
 
-#put period
+#Use print statement to state the best and worst pitchers based on the ERA
 print("The best pitcher is #"+ str(best_pitcher), " with an ERA of ", lowest, ".", sep="")
 print("The worst pitcher is #"+ str(worst_pitcher), " with an ERA of ", greatest, ".", sep="")
