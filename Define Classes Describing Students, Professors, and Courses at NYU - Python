@@ -1,0 +1,105 @@
+#Cassandra Salazar, Section 05, 5/9/2022, assignment 11, problem 1
+class Student:
+  def __init__(self, uni, name, year):
+    self.uni=uni
+    self.name=name
+#if statement for 1 to 4 
+    self.year=year
+    self.courselist=[]
+  def enroll(self, course):
+    #course.self.list_unis_students.append(self.uni)
+    self.courselist.append(course)
+    #giving course list of students uni
+    #use self.uni to refer back to the function
+    course.list_unis_students.append(self.uni)
+  #overrides print method
+  def __str__(self):
+    x= self.name+ " is a student with uni " + self.uni + " in year " + str(self.year) + " at NYU, enrolled in the following courses: [" 
+    for i in range(len(self.courselist)):
+      course=self.courselist[i]
+      
+      x+=course.course_num
+      #if we havent reached the final index then we add a comma
+      if i < len(self.courselist)-1:
+        x+=", "
+      
+    x+="]."
+    return x
+
+#very similar process to Class Student
+class Professor:
+  def __init__(self, uni, name, office):
+    self.uni=uni
+    self.name=name
+    self.office=office
+    self.courselist=[]
+  def list(self, course):
+    self.courselist.append(course)
+  def __str__(self):
+    y= self.name+ " is a professor at NYU with an office in " + self.office + " and a uni of " + self.uni + ", teaching the following courses: ["
+    for i in range(len(self.courselist)):
+      course=self.courselist[i]
+      y+=course.course_num
+      #going through course list
+      if i < len(self.courselist)-1:
+        y+=", "
+      
+    y+="]."
+    return y
+
+
+class Course:
+  def __init__(self, course_num, professor, time, room):
+    self.course_num=course_num
+    self.professor=professor
+    self.time=time
+    self.room=room
+    #professor in the constructor input
+    #telling professor what course hes teaching
+    professor.courselist.append(self)
+    self.list_unis_students=[]
+  def enroll(self, student):
+    self.list_unis_students.append(student.uni)
+    
+    #self is the current course
+    #this is the course we need which is why we add self
+    student.courselist.append(self)
+  def __str__(self):
+    #cannot add object has to be object.name
+    z= "Course " + str(self.course_num) + " is taught by " + self.professor.name + " and meets at " + str(self.time) + " in " + str(self.room) + "; student unis: [" #self.list_unis_students
+    for i in range(len(self.list_unis_students)):
+      uni=self.list_unis_students[i]
+      z+=uni
+      if i < len(self.list_unis_students)-1:
+        z+=", "
+    z+="]."
+    return z
+#return outp=???
+    
+# create three students, each with uni, name, and year in school
+Mary=Student("mw1111","Mary Woods",1)
+Vinod=Student("vk1023","Vinod Khosla",3)
+Jane=Student("jm1267","Jane Martinez",2)
+# create two professors, each with uni, name, and office
+Joe=Professor("jw2222","Joe Wang","WWH 417")
+Janine=Professor("jt8764","Janine Tanaka","WWH 419")
+# create a course taught by Joe Wang and add two students to it
+# note it is initialized with course number, a professor object, a meeting
+
+#time and a meeting room
+cs0002=Course("CS 0002",Joe,"MW 11-12:15","Silver 201")
+cs0002.enroll(Mary)
+cs0002.enroll(Vinod)
+# create a course taught by Janine Tanaka and add two students to it
+cs0101=Course("CS 0101",Janine,"TR 11-12:15","Silver 409")
+cs0101.enroll(Vinod) # one way to enroll a student
+Jane.enroll(cs0101) # the other way to enroll a student
+# print out all of the objects (the print function calls
+# the __str__ method in each case)
+print(Mary)
+print(Vinod)
+print(Jane)
+print(Janine)
+print(Joe)
+print(cs0002)
+print(cs0101)
