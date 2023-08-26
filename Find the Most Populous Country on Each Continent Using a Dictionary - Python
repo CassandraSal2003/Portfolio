@@ -1,0 +1,107 @@
+#Cassandra Salazar, Section 05, 5/3/2022, assignment 10, problem 5
+
+#Function: readData() to go through all of the continents and get the biggest popultion of each continent
+#Processing: dictionaries, for loop, indexing
+#Output: The key is the continent and the values is the country in that continent with the biggest population 
+def readData():
+    data={}
+  #open file
+    f = open("countries.csv", "r")
+    priceList = f.readlines()
+    city=""
+    
+    for item in priceList:
+      #Get rid of "/n and make spaces between the commas"
+      value={}
+      #item split is the continet in each smaller list
+      item_split=item.strip().split(',')
+      value["continent"]=item_split[1]
+      #key for data dictionary
+      city=item_split[0]
+      #assigning integer value into specific positions
+      value["gdpPerCapita:"]=item_split[2]
+      value["population:"]=item_split[3]
+      value["=area:"]=item_split[4]
+      #adding each element in the data 
+      data[city]=value
+      
+    return data
+
+    # closes file
+    f.close()
+#counter so that it only shows the first two (break out of loop when theres 2)
+counter=0
+#represents data from previous function
+data1=readData()
+
+#returns small dictionary
+#goes through every country
+dictionary={}
+for c in data1.keys():
+  #access value 
+  #place of continent and population
+  continent=data1[c]["continent"]
+  population=int(data1[c]["population:"])
+  #print(population)
+
+
+#Europe 
+  if continent=="Europe":
+    if continent not in dictionary.keys():
+      dictionary["Europe"]=c
+      biggest_Europe=population
+    else:
+      #replacing previous with the bigger value of the continet
+      if population>biggest_Europe:
+        dictionary["Europe"]=c
+        biggest_Europe=population
+
+
+#Africa
+  if continent=="Africa":
+    if continent not in dictionary.keys():
+      dictionary["Africa"]=c
+      biggest_Africa=population
+    else:
+      #replacing previous with the bigger value of the continet
+      if population>biggest_Africa:
+        dictionary["Africa"]=c
+        biggest_Africa=population
+
+#Oceania
+  if continent=="Oceania":
+    if continent not in dictionary.keys():
+      dictionary["Oceania"]=c
+      biggest_Oceania=population
+    else:
+      #replacing previous with the bigger value of the continet
+      if population>biggest_Oceania:
+       
+        dictionary["Oceania"]=c
+        biggest_Oceania=population
+
+#Americas
+  if continent=="Americas":
+    if continent not in dictionary.keys():
+      dictionary["Americas"]=c
+      biggest_Americas=population
+    else:
+      #replacing previous with the bigger value of the continet
+      if population>biggest_Americas:
+        dictionary["Americas"]=c
+        biggest_Americas=population
+
+#Asia
+  if continent=="Asia":
+    if continent not in dictionary.keys():
+      dictionary["Asia"]=c
+      biggest_Asia=population
+    else:
+      #replacing previous with the bigger value of the continet
+      if population>biggest_Asia:
+        dictionary["Asia"]=c
+        biggest_Asia=population
+
+print(dictionary)
+
+    
