@@ -1,0 +1,37 @@
+#Cassandra Salazar, Section 05, 4/18/2022, assignment 8, problem 2
+
+#Function:  ask the user which of the products they want to buy and how many.
+#processing: take inputs and respond based on how many are in stock
+#Output: Total of all items 
+
+#make a variable for the different products and their prices and how many there are
+products= ['rye bread', 'strawberry jam', 'frozen waffles']
+prices = [3.99, 4.99, 5.99]
+inventory = [4, 3, 5]
+c=0
+total=0
+print("Welcome to our store!")
+
+#if they enter stop, stop the program
+while True:
+    p= input("Enter a product, enter 'stop' to exit: ")
+    if p=="stop": break 
+    if (p in products):
+        i=products.index(p)
+        while True:
+            x = int(input(f"How many do you want of product: {p}: "))
+            if x>inventory[i]: 
+                c+=1
+                print(f"Only {inventory[i]} in stock, try again.") #if the user asks for more than is available, tell them to try again
+            else:
+                total+=prices[i]*x #calculate the price of each product
+                inventory[i]-=x
+                print(f"The price for {x} of product: {p} is ${prices[i]*x}.")
+                break
+        print(f"Your total so far is ${total}.")      
+    else:
+        print ("Product not in inventory, please try again.")
+   
+print(f"Your grand total, including tax, is ${total*1.08875:.2f}.")
+print("Thank you for shopping at the CS 0002 store!")
+
